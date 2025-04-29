@@ -1,0 +1,70 @@
+.app-container {
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.note-form {
+  background: white;
+  padding-bottom: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.input-field {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button,
+.delete-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 1rem;
+}
+
+.loading-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.notes-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0;
+  margin-top: 1rem;
+  list-style: none;
+}
+
+.note-item {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
