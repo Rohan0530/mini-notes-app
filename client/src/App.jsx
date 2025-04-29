@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css'
 
-const API_URL = 'http://localhost:5000/notes'; // Change this after deploying
+const API_URL = 'https://mini-notes-app-backend.onrender.com/notes';
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -10,55 +10,50 @@ function App() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  // Function to fetch notes
   const fetchNotes = async () => {
-    setLoading(true); // Start loading
+    setLoading(true); 
     try {
-      const res = await axios.get(API_URL); // Fetch notes from backend
-      setNotes(res.data); // Update state with the fetched notes
+      const res = await axios.get(API_URL); 
+      setNotes(res.data); 
     } catch (error) {
       console.error('Error fetching notes:', error);
     }
-    setLoading(false); // Stop loading once request is complete
+    setLoading(false); 
   };
 
-  // Fetch notes on initial page load (component mount)
   useEffect(() => {
-    fetchNotes(); // Call fetchNotes when component is mounted
-  }, []); // Empty dependency array means this runs only once when the component is mounted
+    fetchNotes(); 
+  }, []); 
 
-  // Handle adding a new note
   const handleAdd = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading when adding a note
+    setLoading(true); 
     try {
-      await axios.post(API_URL, { title, content }); // Add note via POST request
-      setTitle(''); // Clear title input
-      setContent(''); // Clear content input
-      fetchNotes(); // Refresh notes after adding
+      await axios.post(API_URL, { title, content }); 
+      setTitle(''); 
+      setContent(''); 
+      fetchNotes(); 
     } catch (error) {
       console.error('Error adding note:', error);
     }
-    setLoading(false); // Stop loading after request is complete
+    setLoading(false); 
   };
 
-  // Handle deleting a note
   const handleDelete = async (id) => {
-    setLoading(true); // Start loading when deleting a note
+    setLoading(true); 
     try {
       await axios.delete(`${API_URL}/${id}`); // Delete note via DELETE request
-      fetchNotes(); // Refresh notes after deleting
+      fetchNotes(); 
     } catch (error) {
       console.error('Error deleting note:', error);
     }
-    setLoading(false); // Stop loading after request is complete
+    setLoading(false); 
   };
 
   return (
     <div className="app-container">
       <h2 className="app-title">Mini Notes</h2>
 
-      {/* Form to add a new note */}
       <form className="note-form" onSubmit={handleAdd} style={{ position: 'sticky', top: 0, background: 'white', paddingBottom: '1rem' }}>
         <input
           className="input-field"
