@@ -8,6 +8,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.send('Mini Notes App backend is running');
+});
 app.use('/notes', notesRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
